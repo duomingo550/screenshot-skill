@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400">
+  <g fill="none" stroke="#f4efe2" stroke-width="42" stroke-linecap="round" stroke-linejoin="round">
+    <!-- l -->
+    <path d="M85 95 L85 315"/>
+    <!-- a -->
+    <circle cx="215" cy="240" r="75"/>
+    <path d="M290 170 L290 315"/>
+    <!-- r -->
+    <path d="M370 170 L370 315"/>
+    <path d="M370 205 C370 165 405 150 445 160"/>
+  </g>
+  <!-- k stem -->
+  <path d="M500 85 L500 315" fill="none" stroke="#f4efe2" stroke-width="42" stroke-linecap="round"/>
+  <!-- k lower leg -->
+  <path d="M500 235 L615 315" fill="none" stroke="#f4efe2" stroke-width="42" stroke-linecap="round"/>
+  <!-- k upper arm becomes a wing -->
+  <path d="M500 235 C545 195 600 145 690 105 C660 155 630 200 600 245 C565 245 530 240 500 235 Z" fill="#1f7a5a"/>
+  <!-- song -->
+  <path d="M690 95 C710 80 720 60 715 40" fill="none" stroke="#e08730" stroke-width="10" stroke-linecap="round"/>
+  <path d="M710 120 C740 100 752 72 746 42" fill="none" stroke="#e08730" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+</svg>

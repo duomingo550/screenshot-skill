@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>screenshot · 使用说明</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 01 封面 -->
+<section class="page cover">
+  <div class="brand">
+    <img class="mark" src="assets/yunque-mark.png" alt="云雀">
+    <img class="wordmark" src="assets/lark-wordmark-light.svg" alt="CloudLark">
+  </div>
+  <div class="kicker">SCREENSHOT / LARK EDITION</div>
+  <h1>把屏幕<br><span>变成一张图</span></h1>
+  <p class="lead">一条命令截下桌面、整屏或指定区域，输出 PNG/JPEG 与机器可读的 JSON，供智能体直接接住。不需要安装任何 Python 包。</p>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><b>调用脚本</b></div>
+    <div class="step"><span class="n">02</span><b>截取画面</b></div>
+    <div class="step"><span class="n">03</span><b>输出 JSON</b></div>
+    <div class="step"><span class="n">04</span><b>归档交付</b></div>
+  </div>
+  <div class="footerline">技能说明书 · 站长自制<span>lark123.com · 2026.11.25</span></div>
+</section>
+
+<!-- 02 先看结论 -->
+<section class="page">
+  <div class="sec"><span class="num">00</span><h2>先看结论</h2></div>
+  <blockquote class="bigquote">不是「按一下截图键」，而是把屏幕变成可被智能体调用的稳定接口：一条命令、一份 JSON、一个可直接交付的文件路径。</blockquote>
+
+  <div class="two">
+    <div class="card">
+      <div class="sub">它会自动完成</div>
+      <ul>
+        <li>识别主屏，或按坐标裁出指定区域</li>
+        <li>多显示器时拼接成一张虚拟屏</li>
+        <li>按后缀保存 PNG 或 JPEG，JPEG 可调质量</li>
+        <li>返回路径、宽高、字节数，可直接被程序消费</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="sub">最终交付</div>
+      <p class="mono">screen.png · 1920×1080 · 395 KB</p>
+      <p class="small">外加一行 stdout JSON，智能体据此继续读图、标注或上传。</p>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead><tr><th>这次测出来的问题</th><th>处理</th></tr></thead>
+    <tbody>
+      <tr><td>参数名容易写成 <b>--output</b></td><td>正确是 <b>--out</b>，说明书与示例统一</td></tr>
+      <tr><td>输出目录不存在</td><td>脚本会自动建目录，实测通过</td></tr>
+      <tr><td>区域四个参数只给一半</td><td>按文档回退为整屏，不报错</td></tr>
+    </tbody>
+  </table>
+
+  <div class="status">
+    <div><strong>7 / 7</strong><span>测试用例通过</span></div>
+    <div><strong>3</strong><span>截图模式</span></div>
+    <div><strong>0</strong><span>外部依赖</span></div>
+  </div>
+
+  <div class="pagefooter"><span>screenshot · 使用说明</span><span class="brandfoot"><img src="assets/yunque-mark.png" alt=""><span class="url">lark123.com</span></span><span>02 / 08</span></div>
+</section>
+
+<!-- 03 图例 -->
+<section class="page">
+  <div class="sec"><span class="num">01</span><h2>它截出来是什么样</h2></div>
+  <p class="body">下面这张图，就是本技能自己截的：默认整屏模式，一条命令、没有任何额外参数。</p>
+  <figure class="figure">
+    <img src="../screenshots/01-desktop.png" alt="默认整屏截图示例">
+    <figcaption>模块化保存：1920×1080 PNG，395 KB；stdout 同步返回同一路径与尺寸。</figcaption>
+  </figure>
+  <div class="note">截图是即时操作：截的是<strong>调用那一刻</strong>的屏幕。要截某个窗口，先把它切到前台再调用。</div>
+
+  <p class="sub" style="margin-top:6mm">同一次调用返回的 JSON</p>
+  <div class="code">{"path": "C:\\shots\\home.png", "width": 1920, "height": 1080, "bytes": 404609}</div>
+  <p class="small">智能体拿到这行 JSON 就能直接读图、上传或写进报告，不需要再猜文件在哪、多大。</p>
+  <div class="pagefooter"><span>screenshot · 使用说明</span><span class="brandfoot"><img src="assets/yunque-mark.png" alt=""><span class="url">lark123.com</span></span><span>03 / 08</span></div>
+</section>
+
+<!-- 04 安装 -->
+<section class="page">
+  <div class="sec"><span class="num">02</span><h2>安装：三步</h2></div>
+  <p class="body">把整个 <span class="mono">screenshot</span> 文件夹放进智能体的技能目录即可。<b>不要只复制 SKILL.md</b>，脚本和 vendor 必须一起带。</p>
+
+  <div class="steps">
+    <div class="step-row"><span class="n">1</span><div><b>放目录</b>
+      <div class="code">&lt;技能目录&gt;\screenshot\</div>
+    </div></div>
+    <div class="step-row"><span class="n">2</span><div><b>确认依赖</b>
+      <p class="small">Python 3.14 即可，<b>不需要 pip install</b>：Pillow 已经放在 <span class="mono">vendor/</span> 里。</p>
+    </div></div>
+    <div class="step-row"><span class="n">3</span><div><b>跑一条命令</b>
+      <div class="code">python "&lt;技能目录&gt;\scripts\screenshot.py" --out "C:\shots\home.png"</div>
+    </div></div>
+  </div>
+
+  <div class="note">豆包是 <span class="mono">.user_skills</span>；其它智能体换成各自的技能目录。脚本本身不认任何宿主专有路径，也不依赖具体安装位置。</div>
+  <p class="sub" style="margin-top:5mm">装完先自检</p>
+  <p class="body">双击发布包里的 <span class="mono">自检.ps1</span>：自动截 4 张图并给出 PASS / FAIL，只在临时目录写文件。</p>
+  <div class="pagefooter"><span>screenshot · 使用说明</span><span class="brandfoot"><img src="assets/yunque-mark.png" alt=""><span class="url">lark123.com</span></span><span>04 / 08</span></div>
+</section>
+
+<!-- 05 用法 -->
+<section class="page">
+  <div class="sec"><span class="num">03</span><h2>四种用法</h2></div>
+
+  <p class="sub">1 · 截主屏（最常用）</p>
+  <div class="code">python screenshot.py
+<span class="c"># 自动存到 技能目录/screenshots/screenshot_20261125_125028.png</span>
+<span class="c"># stdout: {"path": "...", "width": 1920, "height": 1080, "bytes": 404609}</span></div>
+
+  <p class="sub">2 · 指定路径与格式</p>
+  <div class="code">python screenshot.py --out "C:\shots\home.png"
+python screenshot.py --out "C:\shots\home.jpg" --quality 85</div>
+
+  <p class="sub">3 · 截指定区域（物理像素，左上角为 0,0）</p>
+  <div class="code">python screenshot.py --x 440 --y 430 --width 1040 --height 400 --out "C:\shots\region.png"</div>
+
+  <p class="sub">4 · 多显示器拼接</p>
+  <div class="code">python screenshot.py --all-screens --out "C:\shots\all.png"</div>
+
+  <table class="table">
+    <thead><tr><th>参数</th><th>说明</th><th>默认</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">--out</td><td>输出路径，按后缀决定 PNG / JPEG</td><td>技能目录下带时间戳</td></tr>
+      <tr><td class="mono">--x --y --width --height</td><td>区域左上角与宽高</td><td>不给 = 整屏</td></tr>
+      <tr><td class="mono">--all-screens</td><td>拼接所有显示器的虚拟屏</td><td>关</td></tr>
+      <tr><td class="mono">--quality</td><td>JPEG 质量 1–100</td><td>90</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagefooter"><span>screenshot · 使用说明</span><span class="brandfoot"><img src="assets/yunque-mark.png" alt=""><span class="url">lark123.com</span></span><span>05 / 08</span></div>
+</section>
+
+<!-- 06 区域示例 -->
+<section class="page">
+  <div class="sec"><span class="num">04</span><h2>区域截图长这样</h2></div>
+  <p class="body">同一条命令加上四个坐标参数，就只截出你要的那一块。下面这张是 <span class="mono">--x 440 --y 430 --width 1040 --height 400</span> 的结果。</p>
+  <figure class="figure">
+    <img src="../screenshots/02-region.png" alt="区域截图示例">
+    <figcaption>1040×400 的裁剪结果；坐标基于物理像素，与缩放比例无关。</figcaption>
+  </figure>
+  <div class="two">
+    <div class="card"><div class="sub">适合截</div>
+      <ul><li>某个弹窗、某张卡片</li><li>报错信息区域</li><li>固定位置的图表</li></ul>
+    </div>
+    <div class="card"><div class="sub">注意</div>
+      <ul><li>四个参数要同时给</li><li>多屏时先 --all-screens 看偏移</li><li>高 DPI 缩放不影响物理像素</li></ul>
+    </div>
+  </div>
+  <div class="pagefooter"><span>screenshot · 使用说明</span><span class="brandfoot"><img src="assets/yunque-mark.png" alt=""><span class="url">lark123.com</span></span><span>06 / 08</span></div>
+</section>
+
+<!-- 07 能解决什么 -->
+<section class="page">
+  <div class="sec"><span class="num">05</span><h2>能解决什么问题</h2></div>
+  <p class="body">智能体在电脑上干活，最缺的是「看见」：报错了、页面歪了、用户说「就这个界面」——都需要一张当前的屏幕。</p>
+
+  <div class="pipeline">
+    <div>调用脚本</div><div>截取画面</div><div>编码落盘</div><div>返回 JSON</div><div>智能体读图/交付</div>
+  </div>
+
+  <div class="two">
+    <div class="card good"><div class="sub">适合</div>
+      <ul>
+        <li>把当前屏幕存成证据或素材</li>
+        <li>录屏前的首帧定格</li>
+        <li>把「我屏幕上这个」变成可传的文件</li>
+        <li>批量截多显示器工作区</li>
+      </ul>
+    </div>
+    <div class="card no"><div class="sub">不适合</div>
+      <ul>
+        <li>录制视频（请用录屏技能）</li>
+        <li>OCR、标注、裁剪后处理</li>
+        <li>macOS / Linux（仅 Windows）</li>
+        <li>锁屏或断开的远程会话</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pagefooter"><span>screenshot · 使用说明</span><span class="brandfoot"><img src="assets/yunque-mark.png" alt=""><span class="url">lark123.com</span></span><span>07 / 08</span></div>
+</section>
+
+<!-- 08 迁移与排错 -->
+<section class="page">
+  <div class="sec"><span class="num">06</span><h2>迁移到别的智能体</h2></div>
+  <table class="table">
+    <thead><tr><th>目标</th><th>要改什么</th><th>难度</th></tr></thead>
+    <tbody>
+      <tr><td>Claude Code / Codex</td><td>把脚本路径换成绝对路径，其余照旧</td><td>低</td></tr>
+      <tr><td>Cursor / 自研 Agent</td><td>同上；让工具层直接执行这条命令并读 stdout</td><td>低</td></tr>
+      <tr><td>Dify / Coze 等编排平台</td><td>包成「代码执行」节点，输入路径参数</td><td>中</td></tr>
+      <tr><td>非 Windows 环境</td><td>不可用，需换各自的截图实现</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <div class="note">它不调用任何宿主专有接口，只依赖 Python 与 Pillow，所以「能执行命令」的智能体都能接。</div>
+
+  <div class="sec" style="margin-top:8mm"><span class="num">07</span><h2>常见问题</h2></div>
+  <div class="issue"><b>截出来是黑屏？</b><p>锁屏、远程会话断开或服务模式下截不到，需要前台桌面会话。</p></div>
+  <div class="issue"><b>报 unrecognized arguments: --output？</b><p>参数是 <span class="mono">--out</span>。</p></div>
+  <div class="issue"><b>区域截出来位置不对？</b><p>坐标是物理像素，且四个参数要一起给；多屏先用 <span class="mono">--all-screens</span> 确认虚拟屏尺寸。</p></div>
+
+  <div class="status">
+    <div><strong>v1.0.0</strong><span>打包版本</span></div>
+    <div><strong>2026.11.25</strong><span>发布时间</span></div>
+    <div><strong>自制</strong><span>版权与出处</span></div>
+  </div>
+  <div class="pagefooter"><span>screenshot · 使用说明</span><span class="brandfoot"><img src="assets/yunque-mark.png" alt=""><span class="url">lark123.com</span></span><span>08 / 08</span></div>
+</section>
+
+</body>
+</html>

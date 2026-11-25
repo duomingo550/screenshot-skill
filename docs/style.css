@@ -1,0 +1,91 @@
+
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:#f4f0e7; color:#17302d; font-family:"Microsoft YaHei","PingFang SC",sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.page { width:210mm; height:297mm; padding:18mm 18mm 17mm; position:relative; overflow:hidden; page-break-after:always; background:#f4f0e7; }
+.page:last-child { page-break-after:auto; }
+.page::before { content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(20,63,58,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(20,63,58,.025) 1px,transparent 1px); background-size:7mm 7mm; pointer-events:none; }
+.page > * { position:relative; }
+.cover { background:#123f3b; color:#f8f2e5; padding:22mm 20mm; }
+.cover::before { background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size:8mm 8mm; }
+.cover .kicker { font-size:9pt; letter-spacing:4px; color:#d9a64c; text-transform:uppercase; }
+.cover h1 { font-size:38pt; line-height:1.12; margin:22mm 0 6mm; letter-spacing:-1px; }
+.cover h1 span { color:#e6b65a; }
+.cover .sub { font-size:13pt; line-height:1.8; max-width:145mm; color:#d6e2dc; }
+.cover .issue { position:absolute; right:20mm; top:20mm; width:47mm; border-top:1px solid rgba(230,182,90,.7); padding-top:4mm; font-size:8.5pt; line-height:1.6; color:#bcd0c8; }
+.cover .pipeline { position:absolute; left:20mm; right:20mm; bottom:34mm; display:flex; gap:3mm; }
+.cover .step { flex:1; border-top:2px solid #d9a64c; padding-top:4mm; font-size:9pt; color:#e8efe9; }
+.cover .step b { display:block; color:#e6b65a; font-family:Georgia,serif; font-size:18pt; margin-bottom:1mm; }
+.cover .footerline { position:absolute; left:20mm; right:20mm; bottom:15mm; display:flex; justify-content:space-between; color:#9bb2aa; font-size:8pt; border-top:1px solid rgba(255,255,255,.16); padding-top:3mm; }
+h2.sec { font-size:25pt; line-height:1.25; margin:0 0 5mm; letter-spacing:-.5px; }
+h2.sec .no { font-family:Georgia,serif; color:#c2842d; font-size:12pt; letter-spacing:0; margin-right:3mm; vertical-align:middle; }
+.lead { font-size:11.5pt; line-height:1.9; margin:0 0 5mm; color:#36504b; }
+.rule { width:22mm; height:3px; background:#c2842d; margin:4mm 0 7mm; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:6mm; }
+.card { background:#fffdf7; border:1px solid #d6d0c2; padding:5mm; }
+.card h3 { font-size:11pt; margin:0 0 2.5mm; color:#17443f; }
+.card p, .card li { font-size:9.2pt; line-height:1.7; margin:0; color:#405750; }
+.card ul { margin:0; padding-left:4.5mm; }
+.tag { display:inline-block; background:#163f3a; color:#fff8e8; padding:1.1mm 2.4mm; font-size:8pt; margin:0 1.5mm 1.5mm 0; }
+.bigquote { border-left:5px solid #c2842d; padding:4mm 0 4mm 5mm; font-size:14pt; line-height:1.65; color:#143b37; margin:5mm 0; }
+.mono, code, pre { font-family:Consolas,"Cascadia Mono",monospace; }
+pre { background:#153c38; color:#f5f0e4; padding:4mm 5mm; font-size:8.2pt; line-height:1.65; white-space:pre-wrap; margin:3mm 0 5mm; border-radius:1mm; }
+code { background:#e8e1d3; color:#193d38; padding:.3mm 1.2mm; font-size:.92em; }
+.prompt { background:#fffdf7; border:1px solid #d2c9b9; border-left:6px solid #c2842d; padding:4mm 5mm; font-size:10.5pt; line-height:1.75; margin:3mm 0 6mm; }
+.note { font-size:8.8pt; line-height:1.7; color:#6b756f; border-top:1px solid #d4cdbf; padding-top:3mm; margin-top:4mm; }
+.tree { background:#102f2c; color:#edf1e8; padding:5mm 6mm; font-family:Consolas,monospace; font-size:8.8pt; line-height:1.8; white-space:pre; }
+.screen { width:100%; border:1px solid #cfc6b6; box-shadow:0 3mm 9mm rgba(26,53,48,.09); background:#fff; }
+.screen.chat { max-height:100mm; object-fit:cover; object-position:center; }
+.screen.pdf { max-height:178mm; object-fit:contain; }
+.caption { font-size:8pt; color:#75817a; margin-top:2mm; }
+.steps { counter-reset:item; display:grid; gap:3mm; }
+.step-row { display:grid; grid-template-columns:11mm 1fr; gap:4mm; align-items:start; }
+.step-row .n { font-family:Georgia,serif; font-size:21pt; line-height:1; color:#c2842d; }
+.step-row .body { border-top:1px solid #d5cec0; padding-top:2.5mm; font-size:9.5pt; line-height:1.7; }
+.step-row b { color:#19453f; }
+.table { width:100%; border-collapse:collapse; font-size:8.8pt; line-height:1.55; }
+.table th { background:#143f3a; color:#fff9e9; text-align:left; padding:2.4mm 3mm; }
+.table td { border-bottom:1px solid #d8d1c3; padding:2.4mm 3mm; vertical-align:top; }
+.table tr:nth-child(even) td { background:#ece6da; }
+.toc { margin-top:8mm; border-top:1px solid #cfc7b7; }
+.toc-row { display:flex; align-items:baseline; border-bottom:1px solid #dcd5c8; padding:3.5mm 0; }
+.toc-row .num { width:12mm; font-family:Georgia,serif; color:#c2842d; font-size:12pt; }
+.toc-row .name { flex:1; font-size:11pt; }
+.toc-row .page { color:#65756f; font-size:9pt; }
+.status { display:flex; gap:4mm; margin:5mm 0; }
+.status div { flex:1; background:#e9e2d4; padding:4mm; }
+.status strong { display:block; font-size:17pt; color:#16443f; font-family:Georgia,serif; }
+.status span { font-size:8pt; color:#68766f; }
+.pagefooter { position:absolute; left:18mm; right:18mm; bottom:9mm; border-top:1px solid #d4cdbd; padding-top:2mm; display:flex; justify-content:space-between; font-size:7.5pt; color:#7a867f; }
+.hl { color:#a96d1f; font-weight:700; }
+.good { color:#1f6b50; font-weight:700; }
+.small { font-size:8.4pt; line-height:1.65; color:#5b6a64; }
+
+/* ── 品牌：云雀 logo 与 lark123.com ───────────────── */
+.brand { display:flex; align-items:center; gap:10px; }
+.brand img.mark { width:16mm; height:16mm; border-radius:50%; border:1px solid rgba(244,239,226,.28); }
+.brand img.wordmark { width:26mm; height:auto; }
+.brand .wordmark-dark { width:26mm; height:auto; }
+.cover .brand { margin-bottom:6mm; }
+.cover .brand img.mark { border-color:rgba(244,239,226,.35); }
+.pagefooter .brandfoot { display:flex; align-items:center; gap:4px; }
+.pagefooter .brandfoot img { width:5mm; height:5mm; border-radius:50%; }
+.pagefooter .brandfoot .url { letter-spacing:.4px; }
+.pagefooter .urlonly { letter-spacing:.6px; }
+
+/* 封面上的文字要在深底上可读 */
+.cover .lead { color: rgba(248,242,229,.84); font-size:10.5pt; line-height:1.9; margin-top:5mm; }
+.cover .name { color:#f8f2e5; }
+
+/* 说明书补充：代码块与插图 */
+.code { background:#143f3b; color:#e9e4d6; font-family:Consolas,"Courier New",monospace; font-size:8.6pt; line-height:1.75; padding:4mm 5mm; border-radius:2px; white-space:pre-wrap; word-break:break-all; }
+.code .c { color:#9fc3b6; }
+.figure { margin:5mm 0 0; }
+.figure img { width:100%; border:1px solid #d4cdbd; display:block; }
+.figure figcaption { font-size:7.8pt; color:#7a867f; margin-top:2mm; }
+.kv { display:grid; grid-template-columns:32mm 1fr; gap:2mm 4mm; font-size:9pt; }
+.kv dt { color:#68766f; }
+.kv dd { margin:0; color:#17302d; }
+
+.table { margin-top:4mm; }
+.sec + .table { margin-top:2mm; }
